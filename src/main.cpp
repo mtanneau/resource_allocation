@@ -1,6 +1,10 @@
-#include "file_parser.h"
+#include <fstream>
 #include <iostream>
+#include <string>
+#include <sstream>
 #include <vector>
+
+#include "problem_data.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -10,17 +14,11 @@ int main(int argc, char* argv[]) {
     }
     
     std::string filepath = argv[1];
-    std::vector<int> numbers;
-    
-    if (!parseIntegerFile(filepath, numbers)) {
-        std::cerr << "Failed to parse file: " << filepath << std::endl;
-        return 1;
-    }
-    
-    std::cout << "Successfully parsed " << numbers.size() << " integers:" << std::endl;
-    for (size_t i = 0; i < numbers.size(); i++) {
-        std::cout << "  [" << i << "] = " << numbers[i] << std::endl;
-    }
-    
+
+    std::cout << "Parsing data from file " << filepath << std::endl;
+    auto pbdata = problem_data();
+    pbdata.parse_data(filepath);
+    pbdata.print_instance();
+
     return 0;
 }
