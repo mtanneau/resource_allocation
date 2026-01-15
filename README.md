@@ -1,6 +1,14 @@
 # resource_allocation
 
-A C++ project for parsing integer data from text files.
+A C++ solver for resource allocation problems.
+
+```math
+\begin{align}
+\min_{x} \quad & c^{\top}x\\
+s.t. \quad & \sum_{j} w_{j} x_{j} \leq b\\
+      & 0 \leq x \leq 1
+\end{align}
+```
 
 ## Project Structure
 
