@@ -7,10 +7,11 @@
 
 class knapsackSolution {
   public:
-    knapsackSolution(knapsackInstance kp) : kp(kp), weight(0.0), value(0.0), x(kp.get_num_items(), 0.0) { }
+    knapsackSolution(knapsackInstance& kp) : kp(kp), weight(0.0), value(0.0), x(kp.get_num_items(), 0.0) { }
+    knapsackSolution(knapsackInstance& kp, double w, double v, std::vector<double> x) : kp(kp), weight(w), value(v), x(x) {}
     void print_solution();
     void set_item_value(int i, double v) {
-        if (0 <= i < x.size()) {
+        if (0 <= i && i < x.size()) {
             std::cout << "Setting item " << i << " to value " << v << std::endl;
             auto xi = x[i];
             // TODO: adjust total value and weight

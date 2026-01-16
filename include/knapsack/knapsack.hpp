@@ -10,6 +10,14 @@ class knapsackInstance {
     void print_stats();
     void solve();
 
+    // Getters
+    const int get_num_items() {return num_items;}
+
+    const double get_capacity() {return capacity;}
+
+    const double get_item_weight(int i) {return weights[i];}
+    const double get_item_value(int i) {return values[i];}
+
     // setters
     inline void set_capacity(double w) {capacity = w;}
 

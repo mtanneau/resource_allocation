@@ -7,6 +7,7 @@
 #include "problem_data.hpp"
 #include "knapsack/knapsack.hpp"
 #include "knapsack/solution.hpp"
+#include "knapsack/greedy.hpp"
 #include "knapsack/generator.hpp"
 
 int main(int argc, char* argv[]) {
@@ -26,6 +27,10 @@ int main(int argc, char* argv[]) {
     // Create a knapsack instance and add a few items
     auto kpg = uniform_generator(20, 20, 1, 100, 1, 100, 0.5);
     auto kp = kpg.generate(42);
+    
+    // Solve using gredy algorithm
+    auto sol = greedy(kp);
+    sol.print_solution();
 
     return 0;
 }
