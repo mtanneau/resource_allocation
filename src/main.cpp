@@ -7,6 +7,7 @@
 #include "problem_data.hpp"
 #include "knapsack/knapsack.hpp"
 #include "knapsack/solution.hpp"
+#include "knapsack/generator.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -23,16 +24,8 @@ int main(int argc, char* argv[]) {
     pbdata.print_instance();
 
     // Create a knapsack instance and add a few items
-    auto kp = knapsackInstance();
-    kp.add_item(1.0, 2.0);
-    kp.add_item(2.0, 3.0);
-    kp.add_item(1.5, 4.0);
-    // kp.print_stats();
-    kp.solve();
-
-    auto sol = knapsackSolution(kp);
-    sol.set_item_value(2, 0.45);
-    sol.print_solution();
+    auto kpg = uniform_generator(20, 20, 1, 100, 1, 100, 0.5);
+    auto kp = kpg.generate(42);
 
     return 0;
 }

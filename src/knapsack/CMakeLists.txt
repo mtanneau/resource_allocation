@@ -6,5 +6,6 @@ target_include_directories(knapsack
 target_sources(knapsack
   PRIVATE
     knapsack.cpp
+    generator.cpp
     solution.cpp
 )

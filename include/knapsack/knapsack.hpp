@@ -10,9 +10,8 @@ class knapsackInstance {
     void print_stats();
     void solve();
 
-    int get_num_items() {
-      return num_items;
-    }
+    // setters
+    inline void set_capacity(double w) {capacity = w;}
 
     void add_item(double weight, double value) {
       num_items += 1;
@@ -37,8 +36,6 @@ class knapsackInstance {
     * @brief Weight of each item
     */
     std::vector<double> weights;
-
-    double compute_dw_bound();
 };
 
 // }
