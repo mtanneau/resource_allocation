@@ -1,0 +1,10 @@
+add_library(knapsack)
+target_include_directories(knapsack
+  PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
+)
+target_sources(knapsack
+  PRIVATE
+    knapsack.cpp
+    solution.cpp
+)
