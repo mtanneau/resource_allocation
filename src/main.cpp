@@ -7,7 +7,6 @@
 #include "problem_data.hpp"
 #include "knapsack/knapsack.hpp"
 #include "knapsack/solution.hpp"
-#include "knapsack/greedy.hpp"
 #include "knapsack/generator.hpp"
 
 int main(int argc, char* argv[]) {
@@ -27,10 +26,22 @@ int main(int argc, char* argv[]) {
     // Create a knapsack instance and add a few items
     auto kpg = uniform_generator(20, 20, 1, 100, 1, 100, 0.5);
     auto kp = kpg.generate(42);
+    std::cout << "Knapsack instance data" << std::endl;
+    std::cout << "Capacity: " << kp.get_capacity() << std::endl;
+    for (int i=0; i < kp.get_num_items(); i++) {
+        std::cout << i 
+            << "  " << kp.get_item_value(i)
+            << "  " << kp.get_item_weight(i)
+            << "  " << kp.get_item_value(i) / kp.get_item_weight(i)
+            << std::endl;
+    }
     
     // Solve using gredy algorithm
-    auto sol = greedy(kp);
-    sol.print_solution();
+    auto sol = kp.solve_dantzig();
+    std::cout << "Greedy solution stats:" << std::endl
+        << "Value  : " << sol.value << std::endl
+        << "Weight : " << sol.weight << std::endl
+        << "Bound  : " << sol.dw_bound << std::endl;
 
     return 0;
 }

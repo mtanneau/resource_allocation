@@ -8,5 +8,4 @@ target_sources(knapsack
     knapsack.cpp
     generator.cpp
     solution.cpp
-    greedy.cpp
 )
